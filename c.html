@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot-Ayaans</title>
+    <style>
+        body{
+            background-color: black;
+            background-image: url('messi.jpeg');
+        }
+        #chat-container {
+            width: 300px;
+            margin: 80px 20px;
+            padding: 20px;
+            border-radius: 5px;
+            /* background-image: linear-gradient(to bottom right,rgb(78, 78, 255) , #00c8ff, #000000); */
+            text-align: center; /* Center align content */
+        }
+        .message-container {
+            /* background-color: black; */
+            color: #fff;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .user-message {
+            float: right;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            clear: both;
+            margin-right: 20px;
+        }
+        .bot-message {
+            float: left;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            clear: both;
+            margin-left: 20px;
+        }
+        #send-btn {
+            margin-top: 10px; /* Add some space above the button */
+        }
+        /* .tree{
+            width:70%
+            background-color: black;
+            color: black;
+            border: 2px pink;
+        } */
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div class="message-container" id="chat-history"></div>
+        <input type="text" id="user-input" placeholder="Ask me Anything..." class="tree">
+        <button id="send-btn">Send</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatHistory = document.getElementById('chat-history');
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.getElementById('send-btn');
+
+            sendBtn.addEventListener('click', function() {
+                const question = userInput.value.trim();
+                if (question !== '') {
+                    addUserMessage(question);
+                    setTimeout(() => addBotMessage('Maloom hai meko!'), 500); // Simulating delay
+                    userInput.value = '';
+                }
+            });
+
+            function addUserMessage(message) {
+                const messageContainer = document.createElement('div');
+                messageContainer.className = 'message-container';
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'user-message';
+                messageDiv.textContent = message;
+                messageContainer.appendChild(messageDiv);
+                chatHistory.appendChild(messageContainer);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+
+            function addBotMessage(message) {
+                const messageContainer = document.createElement('div');
+                messageContainer.className = 'message-container';
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'bot-message';
+                messageDiv.textContent = message;
+                messageContainer.appendChild(messageDiv);
+                chatHistory.appendChild(messageContainer);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
