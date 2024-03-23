@@ -1,24 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Outline Example</title>
-    <style>
-        /* Style the text with an outline */
-        .outlined-text {
-            color: black; /* Set text color */
-            font-size: 24px; /* Set font size */
-            text-shadow: 
-                -1px  -1px 0 blue,  
-                1px  -1px 0 blue,
-                -1px  1px 0 blue,
-                1px  1px 0 blue; /* Set outline color and thickness */
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+  body {
+    font-family: "Gill Sans", sans-serif;
+    text-align: center;
+    background-image: url('ronaldo.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: rgb(12, 12, 12);
+  }
+
+  .typing-container {
+    width: 80%; /* Adjusted width for responsiveness */
+    margin: 0 auto;
+    margin-top: 15%; /* Adjusted margin for responsiveness */
+    font-size: 4vw; /* Responsive font size */
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+  }
+
+  .typing-text {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid rgb(0, 229, 255);
+    animation: typing 6s infinite, blink-caret .75s infinite;
+    font-size: 1.5vw; /* Responsive font size */
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: rgb(0, 231, 252);
+    }
+  }
+
+  .typing-text.hidden {
+    visibility: hidden;
+  }
+
+  .typing-text.erased {
+    visibility: visible;
+    animation: typing 6s infinite, blink-caret .75s infinite;
+  }
+
+  .next-button {
+    width: 50%; /* Adjusted width for responsiveness */
+    margin: 20px auto; /* Adjusted margin for responsiveness */
+    font-size: 4vw; /* Responsive font size */
+    padding: 10px 35px;
+    background-color: #007bff;
+    color: white;
+    font-family: "Gill Sans", sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: 768px) {
+    /* Adjustments for larger screens */
+    .typing-container {
+      width: 60%;
+      margin-top: 10%;
+      font-size: 3vw;
+    }
+
+    .typing-text {
+      font-size: 1.2vw;
+    }
+
+    .next-button {
+      width: 30%;
+      margin-top: 50px;
+      font-size: 3vw;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1 class="outlined-text">Outlined Text Example</h1>
-    <p class="outlined-text">This is an example of outlined text using CSS.</p>
+<div class="container">
+<div class="typing-container">
+  <div class="typing-text"><h3>Hii!! Meet him, this is Bot-ayaan.</h3></div>
+  <div class="typing-text hidden"><h3>He knows every answer of this mankind.</h3></div>
+  <div class="typing-text hidden"><h3>Bot-ayaan has never been disappointed .</h3></div>
+</div>
+<a href="b.html" class="next-button">Get Started ➡</a>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var texts = document.querySelectorAll('.typing-text');
+
+    function startAnimations() {
+      for (var i = 0; i < texts.length; i++) {
+        texts[i].classList.remove('hidden');
+      }
+      setTimeout(function() {
+        for (var i = 0; i < texts.length; i++) {
+          texts[i].classList.add('erased');
+        }
+      }, 2000);
+    }
+
+    startAnimations();
+  });
+</script>
 </body>
 </html>
